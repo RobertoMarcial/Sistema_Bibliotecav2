@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombre: MyString
+  nacionalidad: MyString
+  idioma: MyString
+  ganancias_anuales: 9.99
+
+two:
+  nombre: MyString
+  nacionalidad: MyString
+  idioma: MyString
+  ganancias_anuales: 9.99
