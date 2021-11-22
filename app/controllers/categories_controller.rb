@@ -18,12 +18,20 @@ class CategoriesController < ApplicationController
   
     respond_to do |format|
       if @categoria.save
-        format.json { head :no_content }
         format.js 
+        format.json { head :no_content }
+       
         
       else
-        format.json { render json: @categoria.errors.full_messages, status: :unprocessable_entity }
-        format.js { render :new }
+        format.js do 
+          errors_count = @categoria.errors.size
+          flash.now.alert = "#{errors_count} #{"errors".pluralize(errors_count)} prohibido este mensaje al guardar"
+          render :new 
+        end
+        
+        format.json { render json: @categoria.errors, status: :unprocessable_entity }
+       
+       
       end
     end
   end
@@ -31,11 +39,17 @@ class CategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @categoria.update(category_params)
-        format.json { head :no_content }
         format.js
+        format.json { head :no_content }
+        
       else
+        format.js do 
+          errors_count = @categoria.errors.size
+          flash.now.alert = "#{errors_count} #{"errors".pluralize(errors_count)} prohibido este mensaje al guardar"
+          render :edit
+        end
         format.json { render json: @categoria.errors.full_messages, status: :unprocessable_entity }
-        format.js { render :edit }
+        
       end
     end
   end

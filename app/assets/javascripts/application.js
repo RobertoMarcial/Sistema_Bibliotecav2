@@ -18,3 +18,16 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+
+document.addEventListener('turbolinks:load', () => {
+    (document.querySelectorAll('#alert .close') || []).forEach(($close) =>{
+        $alert = $close.parentNode;
+        $close.addEventListener('click',() => {
+            $alert.parentNode.addChild($alert);
+        });    
+    });
+    
+     
+  
+  });
