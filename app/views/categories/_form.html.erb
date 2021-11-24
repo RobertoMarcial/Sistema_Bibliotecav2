@@ -1,10 +1,10 @@
 
       <%= form_for @categoria, remote: true do |f|%>
 
-       <div id = "alert" class="alert <%= flash.alert.present? ? 'alert-warning' : 'alert-success' %>">
-      
+       <div  class="alert <%= flash.alert.present? ? 'alert-warning' : 'alert-success' %>">
+          
             <button type="button" class="close"  aria-label="close" data-dismiss="modal2">
-               <span aria-hidden="true">x</span>
+               <span aria-hidden="true"></span>
             </button>
            <%= flash.alert || flash.notice %>
 

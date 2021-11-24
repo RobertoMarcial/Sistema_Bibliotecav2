@@ -25,7 +25,7 @@ class CategoriesController < ApplicationController
       else
         format.js do 
           errors_count = @categoria.errors.size
-          flash.now.alert = "#{errors_count} #{"errors".pluralize(errors_count)} prohibido este mensaje al guardar"
+          flash.now.alert = "#{errors_count} #{"Errores".pluralize(errors_count)} favor de verificar que los campos no se encuentren vacios !!"
           render :new 
         end
         
@@ -45,7 +45,7 @@ class CategoriesController < ApplicationController
       else
         format.js do 
           errors_count = @categoria.errors.size
-          flash.now.alert = "#{errors_count} #{"errors".pluralize(errors_count)} prohibido este mensaje al guardar"
+          flash.now.alert = "#{errors_count} #{"errors".pluralize(errors_count)} prohibido actualizar de esta manera "
           render :edit
         end
         format.json { render json: @categoria.errors.full_messages, status: :unprocessable_entity }
@@ -71,6 +71,9 @@ class CategoriesController < ApplicationController
     def category_params
       params.require(:category).permit(:nombre, :descripcion)
     end
+
+    
+
   
   end
   
