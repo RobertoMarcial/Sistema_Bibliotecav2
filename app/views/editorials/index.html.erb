@@ -1,2 +1,40 @@
-<h1>Editorials#index</h1>
-<p>Find me in app/views/editorials/index.html.erb</p>
+<h1 class = "h3 mb-2 text-gray-800">Editoriales Internacionales </h1>
+<div>
+        <%= link_to new_editorial_path, {remote: true, class: "btn btn-info", id: "añadir-editorial-btn"} do %>
+
+               <span class= "fas fa-plus-square" style=""> </span>       
+        <% end  %>
+</div>
+<br>
+<div class = "card shadow mb-4">
+    <div class = "card-body">
+        <div class = "table-responsive">
+                <table id= "tablaEditoriales" class = "table table-bordered" width = "100%">
+                        <thead>
+                            <tr>
+                                <th>Nombre Editorial</th>
+                                <th>Pais</th>
+                                <th>Telefono</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% @editorials.each do |edit|%>
+                                <tr id="editorial_<%= edit.id%>">
+                                  <td><%= edit.nombre %></td>
+                                  <td><%= edit.pais %></td>
+                                  <td><%= edit.telefono%></td>
+                                   <td>
+                                      <%= link_to "editar", edit_editorial_path(edit), html_options = {class: "btn btn-info btn-xs", remote: true} %>
+                                      <%= link_to 'Borrar', edit, remote: true, method: :delete, data: { confirm: "¿Borrar categoria: #{edit.nombre}?"}, class: "btn btn-danger btn-xs" %>
+                                  </td>
+                                  
+
+                                </tr>
+                            <% end %>
+                        </tbody>                        
+                </table>
+        </div>
+    </div>
+</div>
+<%=render 'modal_editoriales'%>

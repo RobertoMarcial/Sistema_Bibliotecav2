@@ -18,7 +18,7 @@ class EditorialsController < ApplicationController
       respond_to do |format|
         if @editorial.save
             format.js
-            format.json{head: no_content}
+            format.json{head :no_content}
         else
             format.js do 
               errors_count = @editorial.errors.size
@@ -35,7 +35,7 @@ end
     respond_to do |format|
       if@editorial.update(editorial_params)
         format.js
-        format.json{head: no_content}
+        format.json{head :no_content}
       else
           format.js do
               errors_count = @editorial.errors.size
@@ -66,4 +66,4 @@ end
       end
   end
 
-end
+

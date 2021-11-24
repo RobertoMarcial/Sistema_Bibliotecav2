@@ -1,21 +1,23 @@
 
+         
+     
       <%= form_for @categoria, remote: true do |f|%>
-
-       <div  class="alert <%= flash.alert.present? ? 'alert-warning' : 'alert-success' %>">
-          
-            <button type="button" class="close"  aria-label="close" data-dismiss="modal2">
-               <span aria-hidden="true"></span>
-            </button>
-           <%= flash.alert || flash.notice %>
-
-      </div> 
+      <%if alert.present?%>
+          <div   class="alert alert-danger <%= flash.alert.present? %>" >
+              
+                <button type="button" class="close"  aria-label="close"   >
+                  <span aria-hidden="true" onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>x</span>
+                </button>
+              <%= flash.alert || flash.notice %>
+        </div> 
+       <%end%>
     
 
     <div class="form-group">
       <h4 class="control-label">Datos de la categoría:</h4>
     </div>
    
-            <div  class="item form-group<%= @categoria.errors[:nombre].any?? ' has-error has-feedback' : '' %>">
+            <div  class="item form-group<%= @categoria.errors[:nombre].any? ? ' has-error has-feedback' : '' %>">
               <%= f.label :nombre, "Nombre de Categoría: " %>
               
               <div  class="input-group" >
@@ -30,11 +32,13 @@
 
             <div class="item form-group<%= @categoria.errors[:descripcion].any? ? ' has-error has-feedback' : '' %>">
               <%= f.label :descripcion, "Descripción de la categoría: " %>
+
               <div class="input-group">
                 <%= f.text_area :descripcion, {class: "form-control",:placeholder=>"Introduzca la descripción de la categoría..."} %>
                 <%if @categoria.errors[:descripcion].any? %>
                   <p class="bg-danger"><%= @categoria.errors[:descripcion].to_s[/\w([^"]*)/] %></p>
                 <% end %>
+              
               </div>
             </div>
 

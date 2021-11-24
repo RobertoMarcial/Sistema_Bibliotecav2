@@ -1378,6 +1378,8 @@ pre code {
   .col-xl-7 {
     flex: 0 0 58.33333%;
     max-width: 58.33333%;
+  }.ocultar span {
+    display: none;
   }
   .col-xl-8 {
     flex: 0 0 66.66667%;
@@ -1719,6 +1721,8 @@ pre code {
 .table-active > th,
 .table-active > td {
   background-color: rgba(0, 0, 0, 0.075);
+}.ocultar span {
+  display: none;
 }
 
 .table-hover .table-active:hover {
@@ -5119,6 +5123,7 @@ a.badge-dark:focus, a.badge-dark.focus {
   color: #78261f;
   background-color: #fadbd8;
   border-color: #f8ccc8;
+  
 }
 
 .alert-danger hr {
@@ -5128,6 +5133,8 @@ a.badge-dark:focus, a.badge-dark.focus {
 .alert-danger .alert-link {
   color: #4f1915;
 }
+
+
 
 .alert-light {
   color: #818183;
@@ -5587,6 +5594,8 @@ button.close {
   background-color: transparent;
   border: 0;
 }
+
+
 
 a.close.disabled {
   pointer-events: none;
