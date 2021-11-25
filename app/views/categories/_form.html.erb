@@ -17,24 +17,26 @@
       <h4 class="control-label">Datos de la categoría:</h4>
     </div>
    
-            <div  class="item form-group<%= @categoria.errors[:nombre].any? ? ' has-error has-feedback' : '' %>">
+            <div  class="item form-group <%= @categoria.errors[:nombre].any? ? ' has-error has-feedback' : '' %>">
               <%= f.label :nombre, "Nombre de Categoría: " %>
               
               <div  class="input-group" >
-                <%= f.text_field :nombre, {:class=> "form-control",:placeholder=>"Introduzca el nombre de la categoría..."} %>     
-
+                <%= f.text_field :nombre, {:class=> "form-control #{input_error_class(@categoria, :nombre)}",:placeholder=>"Introduzca el nombre de la categoría..."} %>     
+                <%error_message(@categoria, :nombre)%>
                 <%if @categoria.errors[:nombre].any? %>
                   <p class="bg-danger"><%= @categoria.errors[:nombre].to_s[/\w([^"]*)/] %></p>
+
                 <% end %>
 
               </div>
             </div>
 
-            <div class="item form-group<%= @categoria.errors[:descripcion].any? ? ' has-error has-feedback' : '' %>">
+            <div class="item form-group <%= @categoria.errors[:descripcion].any? ? ' has-error has-feedback' : '' %>">
               <%= f.label :descripcion, "Descripción de la categoría: " %>
 
               <div class="input-group">
-                <%= f.text_area :descripcion, {class: "form-control",:placeholder=>"Introduzca la descripción de la categoría..."} %>
+                <%= f.text_area :descripcion, {class: "form-control #{input_error_class(@categoria, :descripcion)}",:placeholder=>"Introduzca la descripción de la categoría..."} %>
+                 <%error_message(@categoria, :descripcion)%>
                 <%if @categoria.errors[:descripcion].any? %>
                   <p class="bg-danger"><%= @categoria.errors[:descripcion].to_s[/\w([^"]*)/] %></p>
                 <% end %>
