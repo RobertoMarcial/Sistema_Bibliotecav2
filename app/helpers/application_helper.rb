@@ -12,6 +12,6 @@ module ApplicationHelper
         return if error.nil? 
         "is-invalid"
     end
-
+    
 
 end

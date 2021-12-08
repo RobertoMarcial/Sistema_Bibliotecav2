@@ -1,0 +1,9 @@
+// Add the dialog title
+$('#modal-editoriales-title').html("Nueva editorial");
+
+ 
+// Render the new form
+$('.modal-body-editoriales').html('<%= j render("form") %>');
+ 
+// Show the dynamic dialog
+$('#modalEditoriales').modal("show");

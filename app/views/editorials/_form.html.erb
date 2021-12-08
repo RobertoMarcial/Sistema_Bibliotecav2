@@ -1,0 +1,64 @@
+
+
+<%= form_for @editorial , remote: true do |f|%>
+
+        <%if alert.present?%>
+            <div   class="alert alert-danger <%= flash.alert.present? %>" >
+                    
+                        <button type="button" class="close"  aria-label="close"   >
+                        <span aria-hidden="true" onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>x</span>
+                        </button>
+                    <%= flash.alert %>
+                </div> 
+        <%end%>
+
+    <div class="form-group">
+      <h4 class="control-label">datos de editorial:</h4>
+    </div>
+
+    <div  class="item form-group <%= @editorial.errors[:nombre].any? ? ' has-error has-feedback' : '' %>">
+              <%= f.label :nombre, "Nombre de la empresa: " %>
+              
+              <div  class="input-group" >
+                <%= f.text_field :nombre, {:class=> "form-control #{input_error_class(@editorial, :nombre)}",:placeholder=>"Introduzca el nombre de la empresa..."} %>     
+                <%error_message(@editorial, :nombre)%>
+               
+
+              </div>
+            </div>
+
+            <div class="item form-group <%= @editorial.errors[:pais].any? ? ' has-error has-feedback' : '' %>">
+              <%= f.label :pais, "pais de origen: " %>
+
+              <div class="input-group">
+                <%= f.text_field :pais, {class: "form-control #{input_error_class(@editorial, :pais)}",:placeholder=>"Introduzca el pais..."} %>
+                 <%error_message(@editorial, :pais)%>
+              
+              
+              </div>
+            </div>
+
+
+            <div class="item form-group <%= @editorial.errors[:telefono].any? ? ' has-error has-feedback' : '' %>">
+              <%= f.label :telefono, "telefono de la editorial: " %>
+
+              <div class="input-group">
+                <%= f.text_field :telefono, {class: "form-control #{input_error_class(@editorial, :telefono)}",:placeholder=>"Introduzca el numero..."} %>
+                 <%error_message(@editorial, :telefono)%>
+               
+              
+              </div>
+            </div>
+
+
+
+
+
+            <div class="actions col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+              <%= f.submit @editorial.new_record? ? "Crear Editorial" : "Actualizar Editorial", :class => "btn btn-success"%>
+            </div> 
+ 
+
+
+
+<%end%>

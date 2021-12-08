@@ -15,6 +15,8 @@ class EditorialsController < ApplicationController
 
   def create
       @editorial = Editorial.new(editorial_params)
+
+
       respond_to do |format|
         if @editorial.save
             format.js
@@ -62,7 +64,7 @@ end
 
 
       def editorial_params
-        params.require(:Editorial).permit(:nombre, :pais, :telefono)
+        params.require(:editorial).permit(:nombre, :pais, :telefono)
       end
   end
 

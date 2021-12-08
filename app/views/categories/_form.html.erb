@@ -2,17 +2,19 @@
          
      
       <%= form_for @categoria, remote: true do |f|%>
-      <%if alert.present?%>
-          <div   class="alert alert-danger <%= flash.alert.present? %>" >
+
+        <%if alert.present?%>
+              <div   class="alert alert-danger <%= flash.alert.present? %>" >
               
                 <button type="button" class="close"  aria-label="close"   >
                   <span aria-hidden="true" onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>x</span>
                 </button>
               <%= flash.alert || flash.notice %>
-        </div> 
-       <%end%>
+             </div> 
     
+        <%end%>
 
+        
     <div class="form-group">
       <h4 class="control-label">Datos de la categoría:</h4>
     </div>
