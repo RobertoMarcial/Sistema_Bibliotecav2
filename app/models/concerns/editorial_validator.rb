@@ -5,8 +5,8 @@ class EditorialValidator < ActiveModel::Validator
     end
 
     def validate_stock(record)
-        if record.telefono 
-            record.errors.add(:telefono, 'No se pueden aceptar numeros negativos')
+        if record.telefono?
+            record.errors.add(:telefono, 'Ingrese digitos numericos')
         end
     end
 end
