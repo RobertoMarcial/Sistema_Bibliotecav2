@@ -24,7 +24,7 @@ class EditorialsController < ApplicationController
         else
             format.js do 
               errors_count = @editorial.errors.size
-              flash.now.alert = "#{errors_count} #{"Errores".pluralize(errors_count)} favor de verificar que los campos no se encuentren vacios !!"
+              flash.now.alert = "#{errors_count} #{"ERRORES ".pluralize(errors_count)} FAVOR DE REVISAR!!"
               render :new
             end 
 

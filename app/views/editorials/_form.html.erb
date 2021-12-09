@@ -4,6 +4,12 @@
 
         <%if alert.present?%>
             <div   class="alert alert-danger <%= flash.alert.present? %>" >
+
+                      <ul>
+                           <%@editorial.errors.full_messages.each do |msg|%>
+                              <li><span>El Campo </span> <%=msg%></li>
+                          <%end%>
+                      </ul>
                     
                         <button type="button" class="close"  aria-label="close"   >
                         <span aria-hidden="true" onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>x</span>
@@ -13,7 +19,7 @@
         <%end%>
 
     <div class="form-group">
-      <h4 class="control-label">datos de editorial:</h4>
+      <h4 class="control-label">Registro Editorial:</h4>
     </div>
 
     <div  class="item form-group <%= @editorial.errors[:nombre].any? ? ' has-error has-feedback' : '' %>">
