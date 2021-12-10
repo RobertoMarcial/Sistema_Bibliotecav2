@@ -13,7 +13,7 @@ private
     def code_validate
 
         if self.telefono.nil? || self.telefono.length != 10 
-            self.errors.add(:telefono, 'Debe poseer 10 digitos')
+            self.errors.add(:telefono, 'El numero que usted intenta registrar debe poseer 10 digitos')
         end    
 
 
