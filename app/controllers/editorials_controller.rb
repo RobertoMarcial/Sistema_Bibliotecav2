@@ -35,13 +35,16 @@ end
 
   def update
     respond_to do |format|
-      if@editorial.update(editorial_params)
+      if @editorial.update(editorial_params)
         format.js
         format.json{head :no_content}
+
+
       else
           format.js do
               errors_count = @editorial.errors.size
-              flash.now.alert = "#{errors_count} #{"Errores".pluralize(errors_count)} Favor de verificar que los campos se encuentren vacios!!"
+              flash.now.alert = "#{errors_count} #{"Errores".pluralize(errors_count)} No se puede actualizar!!"
+              render :edit
           end
           format.json{render json:@editorial.errors, status: :unprocessable_entity }
       end

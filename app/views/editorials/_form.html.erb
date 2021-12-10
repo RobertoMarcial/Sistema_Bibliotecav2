@@ -7,7 +7,7 @@
 
                       <ul>
                            <%@editorial.errors.full_messages.each do |msg|%>
-                              <li><span>En el campo </span> <%=msg%></li>
+                              <li><span>El campo </span> <%=msg%></li>
                           <%end%>
                       </ul>
                     
@@ -28,6 +28,8 @@
               <div  class="input-group" >
                 <%= f.text_field :nombre, {:class=> "form-control #{input_error_class(@editorial, :nombre)}",:placeholder=>"Introduzca el nombre de la empresa..."} %>     
                 <%error_message(@editorial, :nombre)%>
+                  
+               
                
 
               </div>
