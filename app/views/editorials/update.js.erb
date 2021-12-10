@@ -1,0 +1,4 @@
+$('#modalEditoriales').modal('toggle');
+$('#editorial_<%= @editorial.id %>').replaceWith(
+       '<tr id="editorial_<%= @editorial.id %>" ><td><%= @editorial.nombre %></td><td><%= @editorial.pais %></td><td><%= @editorial.telefono %></td><td><%= link_to 'editar', edit_editorial_path(@editorial), html_options = {class: "btn btn-info btn-xs", remote: true} %> <%= link_to "Borrar", @editorial, remote: true, method: :delete, data: { confirm: "¿Borrar editorial: #{@editorial.nombre}?"}, class: "btn btn-danger btn-xs" %></td></tr>'
+);
