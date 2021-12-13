@@ -1,0 +1,4 @@
+$('#modalAutores').modal('toggle');
+$('#autor_<%= @autor.id %>').replaceWith(
+       '<tr id="autor_<%= @autor.id %>" ><td><%= @autor.nombre %></td><td><%= @autor.nacionalidad %></td><td><%=@autor.idioma%></td><td><span>$</span><%=@autor.ganancias_anuales%></td><td><%= link_to 'editar', edit_author_path(@autor), html_options = {class: "btn btn-info btn-xs", remote: true} %> <%= link_to "Borrar", @autor, remote: true, method: :delete, data: { confirm: "¿Borrar autor: #{@autor.nombre}?"}, class: "btn btn-danger btn-xs" %></td></tr>'
+);
