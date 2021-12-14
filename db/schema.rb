@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_20_010005) do
+ActiveRecord::Schema.define(version: 2021_12_14_053344) do
 
   create_table "authors", force: :cascade do |t|
     t.string "nombre"
@@ -24,6 +24,12 @@ ActiveRecord::Schema.define(version: 2021_11_20_010005) do
   create_table "categories", force: :cascade do |t|
     t.string "nombre"
     t.string "descripcion"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "countries", force: :cascade do |t|
+    t.string "pais"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
