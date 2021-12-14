@@ -5,11 +5,17 @@
 
         <%if alert.present?%>
               <div   class="alert alert-danger <%= flash.alert.present? %>" >
+
+                <ul>
+                    <%@autor.errors.full_messages.each do |msg|%>
+                      <li><span></span> <%=msg%></li>
+                    <%end%>
+               </ul>
               
                 <button type="button" class="close"  aria-label="close"   >
                   <span aria-hidden="true" onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>x</span>
                 </button>
-              <%= flash.alert || flash.notice %>
+              <%= flash.alert %>
              </div> 
     
         <%end%>
@@ -25,10 +31,7 @@
               <div  class="input-group" >
                 <%= f.text_field :nombre, {:class=> "form-control #{input_error_class(@autor, :nombre)}",:placeholder=>"Introduzca Nombre..."} %>     
                 <%error_message(@autor, :nombre)%>
-                <%if @autor.errors[:nombre].any? %>
-                  <p class="bg-danger"><%= @autor.errors[:nombre].to_s[/\w([^"]*)/] %></p>
-
-                <% end %>
+             
 
               </div>
             </div>
@@ -40,10 +43,7 @@
               <div  class="input-group" >
                 <%= f.text_field :nacionalidad, {:class=> "form-control #{input_error_class(@autor, :nacionalidad)}",:placeholder=>"Introduzca Nacionalidad..."} %>     
                 <%error_message(@autor, :nacionalidad)%>
-                <%if @autor.errors[:nacionalidad].any? %>
-                  <p class="bg-danger"><%= @autor.errors[:nacionalidad].to_s[/\w([^"]*)/] %></p>
-
-                <% end %>
+             
 
               </div>
             </div>
@@ -54,10 +54,7 @@
               <div  class="input-group" >
                 <%= f.text_field :idioma, {:class=> "form-control #{input_error_class(@autor, :idioma)}",:placeholder=>"Introduzca el idioma..."} %>     
                 <%error_message(@autor, :idioma)%>
-                <%if @autor.errors[:idioma].any? %>
-                  <p class="bg-danger"><%= @autor.errors[:idioma].to_s[/\w([^"]*)/] %></p>
-
-                <% end %>
+              
 
               </div>
             </div>
@@ -68,10 +65,7 @@
               <div  class="input-group" >
                 <%= f.text_field :ganancias_anuales, {:class=> "form-control #{input_error_class(@autor, :ganancias_anuales)}",:placeholder=>"Introduzca ganancias..."} %>     
                 <%error_message(@autor, :ganancias_anuales)%>
-                <%if @autor.errors[:ganancias_anuales].any? %>
-                  <p class="bg-danger"><%= @autor.errors[:ganancias_anuales].to_s[/\w([^"]*)/] %></p>
-
-                <% end %>
+              
 
               </div>
             </div>
