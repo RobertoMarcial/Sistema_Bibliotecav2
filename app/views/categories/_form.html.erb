@@ -5,11 +5,17 @@
 
         <%if alert.present?%>
               <div   class="alert alert-danger <%= flash.alert.present? %>" >
+
+                 <ul>
+                    <%@categoria.errors.full_messages.each do |msg|%>
+                      <li><span></span> <%=msg%></li>
+                    <%end%>
+               </ul>
               
                 <button type="button" class="close"  aria-label="close"   >
                   <span aria-hidden="true" onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>x</span>
                 </button>
-              <%= flash.alert || flash.notice %>
+              <%= flash.alert%>
              </div> 
     
         <%end%>
@@ -25,10 +31,7 @@
               <div  class="input-group" >
                 <%= f.text_field :nombre, {:class=> "form-control #{input_error_class(@categoria, :nombre)}",:placeholder=>"Introduzca el nombre de la categoría..."} %>     
                 <%error_message(@categoria, :nombre)%>
-                <%if @categoria.errors[:nombre].any? %>
-                  <p class="bg-danger"><%= @categoria.errors[:nombre].to_s[/\w([^"]*)/] %></p>
-
-                <% end %>
+              
 
               </div>
             </div>
@@ -39,9 +42,7 @@
               <div class="input-group">
                 <%= f.text_area :descripcion, {class: "form-control #{input_error_class(@categoria, :descripcion)}",:placeholder=>"Introduzca la descripción de la categoría..."} %>
                  <%error_message(@categoria, :descripcion)%>
-                <%if @categoria.errors[:descripcion].any? %>
-                  <p class="bg-danger"><%= @categoria.errors[:descripcion].to_s[/\w([^"]*)/] %></p>
-                <% end %>
+              
               
               </div>
             </div>

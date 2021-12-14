@@ -1,0 +1,48 @@
+<h1 class = "h3 mb-2 text-gray-800">Categorias de autores </h1>
+
+<div>
+        <%= link_to new_author_path, {remote: true, class: "btn btn-info", id: "añadir-autor-btn"} do %>
+
+               <span class= "fas fa-plus-square"> </span>       
+        <% end  %>
+</div>
+<br>
+
+<div class = "card shadow mb-4">
+    <div class = "card-body">
+        <div class = "table-responsive">
+                <table id= "tablaAutores" class = "table table-bordered" width = "100%">
+                        <thead>
+                            <tr>
+                                <th>Nombre </th>
+                                <th>Nacionalidad</th>
+                                <th>Idioma</th>
+                                <th>ganancias anuales $</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% @autores.each do |aut|%>
+                                <tr id="autor_<%= aut.id%>">
+                                  <td><%= aut.nombre %></td>
+                                  <td><%= aut.nacionalidad %></td>
+                                  <td><%= aut.idioma%></td>
+                                  <td><span>$</span><%= aut.ganancias_anuales%></td>
+                                  
+                                   <td>
+                                      <%= link_to "editar", edit_author_path(aut), html_options = {class: "btn btn-info btn-xs", remote: true} %>
+                                      <%= link_to 'Borrar', aut, remote: true, method: :delete, data: { confirm: "¿Borrar aut: #{aut.nombre}?"}, class: "btn btn-danger btn-xs" %>
+                                  </td>
+                                  
+
+                                </tr>
+                            <% end %>
+                        </tbody>                        
+                </table>
+        </div>
+    </div>
+</div>
+
+<%=render 'modal_autores'%>
+
+

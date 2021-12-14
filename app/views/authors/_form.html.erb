@@ -1,0 +1,83 @@
+
+         
+     
+      <%= form_for @autor, remote: true do |f|%>
+
+        <%if alert.present?%>
+              <div   class="alert alert-danger <%= flash.alert.present? %>" >
+
+                <ul>
+                    <%@autor.errors.full_messages.each do |msg|%>
+                      <li><span></span> <%=msg%></li>
+                    <%end%>
+               </ul>
+              
+                <button type="button" class="close"  aria-label="close"   >
+                  <span aria-hidden="true" onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>x</span>
+                </button>
+              <%= flash.alert %>
+             </div> 
+    
+        <%end%>
+
+        
+    <div class="form-group">
+      <h4 class="control-label">Registro De Autores:</h4>
+    </div>
+   
+            <div  class="item form-group <%= @autor.errors[:nombre].any? ? ' has-error has-feedback' : '' %>">
+              <%= f.label :nombre, "Nombre de Categoría: " %>
+              
+              <div  class="input-group" >
+                <%= f.text_field :nombre, {:class=> "form-control #{input_error_class(@autor, :nombre)}",:placeholder=>"Introduzca Nombre..."} %>     
+                <%error_message(@autor, :nombre)%>
+             
+
+              </div>
+            </div>
+
+
+            <div  class="item form-group <%= @autor.errors[:nacionalidad].any? ? ' has-error has-feedback' : '' %>">
+              <%= f.label :nacionalidad, "Nacionalidad: " %>
+              
+              <div  class="input-group" >
+                <%= f.text_field :nacionalidad, {:class=> "form-control #{input_error_class(@autor, :nacionalidad)}",:placeholder=>"Introduzca Nacionalidad..."} %>     
+                <%error_message(@autor, :nacionalidad)%>
+             
+
+              </div>
+            </div>
+
+             <div  class="item form-group <%= @autor.errors[:idioma].any? ? ' has-error has-feedback' : '' %>">
+              <%= f.label :idioma, "Idioma: " %>
+              
+              <div  class="input-group" >
+                <%= f.text_field :idioma, {:class=> "form-control #{input_error_class(@autor, :idioma)}",:placeholder=>"Introduzca el idioma..."} %>     
+                <%error_message(@autor, :idioma)%>
+              
+
+              </div>
+            </div>
+
+              <div  class="item form-group <%= @autor.errors[:ganancias_anuales].any? ? ' has-error has-feedback' : '' %>">
+              <%= f.label :ganancias_anuales, "Ganacias Anuales $$ :" %>
+              
+              <div  class="input-group" >
+                <%= f.text_field :ganancias_anuales, {:class=> "form-control #{input_error_class(@autor, :ganancias_anuales)}",:placeholder=>"Introduzca ganancias..."} %>     
+                <%error_message(@autor, :ganancias_anuales)%>
+              
+
+              </div>
+            </div>
+            
+
+            <div class="actions col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+              <%= f.submit @autor.new_record? ? "Crear Registro" : "Actualizar Registro", :class => "btn btn-success"%>
+            </div> 
+ 
+
+
+<%end %>
+
+
+
