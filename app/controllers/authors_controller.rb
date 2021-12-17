@@ -3,7 +3,13 @@ class AuthorsController < ApplicationController
   before_action :set_author, only: [:edit, :update, :destroy]
 
   def index
-    @autores = Author.all
+    if params[:pais_id]
+      @autores = Country.find(params[:pais_id]).authors
+      
+      else
+   
+      @autores = Author.all
+      end
   end
 
   def new
@@ -62,7 +68,7 @@ private
     @autor = Author.find(params[:id])
   end
   def author_params
-    params.require(:author).permit(:nombre, :nacionalidad,:idioma,:ganancias_anuales )
+    params.require(:author).permit(:nombre,:idioma,:ganancias_anuales,:pais_id )
   end
 
 end

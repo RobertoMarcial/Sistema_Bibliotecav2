@@ -4,7 +4,7 @@
       <%= form_for @autor, remote: true do |f|%>
 
         <%if alert.present?%>
-              <div   class="alert alert-danger <%= flash.alert.present? %>" >
+              <div class="alert alert-danger" >
 
                 <ul>
                     <%@autor.errors.full_messages.each do |msg|%>
@@ -37,15 +37,13 @@
             </div>
 
 
-            <div  class="item form-group <%= @autor.errors[:nacionalidad].any? ? ' has-error has-feedback' : '' %>">
-              <%= f.label :nacionalidad, "Nacionalidad: " %>
-              
+            <div  class="item form-group <%= @autor.errors[:pais_id].any? ? ' has-error has-feedback' : '' %>">
+              <%= f.label :pais_id, "Nacionalidad: " %>
+            
               <div  class="input-group" >
-                <%= f.text_field :nacionalidad, {:class=> "form-control #{input_error_class(@autor, :nacionalidad)}",:placeholder=>"Introduzca Nacionalidad..."} %>     
-                <%error_message(@autor, :nacionalidad)%>
-             
-
+                <%= f.collection_select(:pais_id ,Country.all, :id,:pais,{prompt: "Selecciona tu pais"},{} ) %>
               </div>
+            
             </div>
 
              <div  class="item form-group <%= @autor.errors[:idioma].any? ? ' has-error has-feedback' : '' %>">

@@ -22,21 +22,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <% @autores.each do |aut|%>
-                                <tr id="autor_<%= aut.id%>">
-                                  <td><%= aut.nombre %></td>
-                                  <td><%= aut.nacionalidad %></td>
-                                  <td><%= aut.idioma%></td>
-                                  <td><span>$</span><%= aut.ganancias_anuales%></td>
-                                  
-                                   <td>
-                                      <%= link_to "editar", edit_author_path(aut), html_options = {class: "btn btn-info btn-xs", remote: true} %>
-                                      <%= link_to 'Borrar', aut, remote: true, method: :delete, data: { confirm: "¿Borrar aut: #{aut.nombre}?"}, class: "btn btn-danger btn-xs" %>
-                                  </td>
-                                  
-
-                                </tr>
-                            <% end %>
+                         <%=render partial: "autor", collection: @autores%>
                         </tbody>                        
                 </table>
         </div>
