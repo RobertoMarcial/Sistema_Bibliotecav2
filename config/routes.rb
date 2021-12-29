@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :categories
   resources :editorials
   resources :authors
+  resources :countries
  
 end

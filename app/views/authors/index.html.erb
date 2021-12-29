@@ -1,28 +1,42 @@
-<h1 class = "h3 mb-2 text-gray-800">Categorias de autores </h1>
-
+<h1 class = "h3 mb-2 text-gray-800">Categoría De Autores </h1>
 <div>
         <%= link_to new_author_path, {remote: true, class: "btn btn-info", id: "añadir-autor-btn"} do %>
-
-               <span class= "fas fa-plus-square"> </span>       
+        <span class= "fas fa-plus-square"> </span>       
         <% end  %>
 </div>
-<br>
+<br/>
 
 <div class = "card shadow mb-4">
     <div class = "card-body">
         <div class = "table-responsive">
-                <table id= "tablaAutores" class = "table table-bordered" width = "100%">
+                <table class = "table table-bordered"  id= "tablaAutores" width = "100%" cellspacing="0">
                         <thead>
                             <tr>
+                                
                                 <th>Nombre </th>
                                 <th>Nacionalidad</th>
                                 <th>Idioma</th>
                                 <th>ganancias anuales $</th>
-                                <th></th>
+                                <th></th<>
                             </tr>
                         </thead>
                         <tbody>
-                         <%=render partial: "autor", collection: @autores%>
+                         <% @autores.each do |aut| %>
+                            <tr id="autor_<%=aut.id%>">
+                                
+                                  <td><%= aut.nombre %></td>
+                                  <td><%= aut.country != nil ? aut.country.pais : "No tiene nacinaidad" %></td> 
+                                  <td><%= aut.idioma%></td>
+                                  <td><span>$</span><%= aut.gat%></td>
+                                  
+                                  
+                                  
+                                   <td>
+                                      <%= link_to "editar", edit_author_path(aut), html_options = {class: "btn btn-info btn-xs", remote: true} %>
+                                      <%= link_to 'Borrar', aut, remote: true, method: :delete, data: { confirm: "¿Borrar aut: #{aut.nombre}?"}, class: "btn btn-danger btn-xs" %>
+                                  </td>
+                            </tr>
+                        <%end%>
                         </tbody>                        
                 </table>
         </div>

@@ -1,4 +1,4 @@
 class Country < ApplicationRecord
 
-has_many :authors
+ has_many :authors     
 end

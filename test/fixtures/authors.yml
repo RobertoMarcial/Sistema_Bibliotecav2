@@ -2,12 +2,12 @@
 
 one:
   nombre: MyString
-  nacionalidad: MyString
   idioma: MyString
-  ganancias_anuales: 9.99
+  gat: 1
+  country: one
 
 two:
   nombre: MyString
-  nacionalidad: MyString
   idioma: MyString
-  ganancias_anuales: 9.99
+  gat: 1
+  country: two
