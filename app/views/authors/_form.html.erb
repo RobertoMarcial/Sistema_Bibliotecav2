@@ -1,13 +1,11 @@
-
-         
      
-      <%= form_for @autor, remote: true do |f|%>
+      <%= form_for @author, {remote: true, multipart: true} do |f|%>
 
         <%if alert.present?%>
-              <div   class="alert alert-danger <%= flash.alert.present? %>" >
+              <div class="alert alert-danger" >
 
                 <ul>
-                    <%@autor.errors.full_messages.each do |msg|%>
+                    <%@author.errors.full_messages.each do |msg|%>
                       <li><span></span> <%=msg%></li>
                     <%end%>
                </ul>
@@ -25,46 +23,43 @@
       <h4 class="control-label">Registro De Autores:</h4>
     </div>
    
-            <div  class="item form-group <%= @autor.errors[:nombre].any? ? ' has-error has-feedback' : '' %>">
+            <div  class="item form-group <%= @author.errors[:nombre].any? ? ' has-error has-feedback' : '' %>">
               <%= f.label :nombre, "Nombre de Categoría: " %>
               
               <div  class="input-group" >
-                <%= f.text_field :nombre, {:class=> "form-control #{input_error_class(@autor, :nombre)}",:placeholder=>"Introduzca Nombre..."} %>     
-                <%error_message(@autor, :nombre)%>
+                <%= f.text_field :nombre, {:class=> "form-control #{input_error_class(@author, :nombre)}",:placeholder=>"Introduzca Nombre..."} %>     
+                <%error_message(@author, :nombre)%>
              
 
               </div>
             </div>
 
 
-            <div  class="item form-group <%= @autor.errors[:nacionalidad].any? ? ' has-error has-feedback' : '' %>">
-              <%= f.label :nacionalidad, "Nacionalidad: " %>
-              
-              <div  class="input-group" >
-                <%= f.text_field :nacionalidad, {:class=> "form-control #{input_error_class(@autor, :nacionalidad)}",:placeholder=>"Introduzca Nacionalidad..."} %>     
-                <%error_message(@autor, :nacionalidad)%>
-             
-
-              </div>
+            <div class="item form-group<%= @author.errors[:country].any? ? ' has-error has-feedback' : '' %>">
+                  <%= f.label :country, "Pais: " %>
+                  <div class="input-group">
+                      <%= collection_select(:author, :country_id, @paises, :id, :pais, {:prompt => 'Seleccione un pais'}, { :class=> "form-control #{input_error_class(@author, :country)}" })%>
+                      <%error_message(@author, :country)%>
+                  </div>
             </div>
 
-             <div  class="item form-group <%= @autor.errors[:idioma].any? ? ' has-error has-feedback' : '' %>">
+             <div  class="item form-group <%= @author.errors[:idioma].any? ? ' has-error has-feedback' : '' %>">
               <%= f.label :idioma, "Idioma: " %>
               
               <div  class="input-group" >
-                <%= f.text_field :idioma, {:class=> "form-control #{input_error_class(@autor, :idioma)}",:placeholder=>"Introduzca el idioma..."} %>     
-                <%error_message(@autor, :idioma)%>
+                <%= f.text_field :idioma, {:class=> "form-control #{input_error_class(@author, :idioma)}",:placeholder=>"Introduzca el idioma..."} %>     
+                <%error_message(@author, :idioma)%>
               
 
               </div>
             </div>
 
-              <div  class="item form-group <%= @autor.errors[:ganancias_anuales].any? ? ' has-error has-feedback' : '' %>">
-              <%= f.label :ganancias_anuales, "Ganacias Anuales $$ :" %>
+              <div  class="item form-group <%= @author.errors[:gat].any? ? ' has-error has-feedback' : '' %>">
+              <%= f.label :gat, "Ganacias Anuales $$ :" %>
               
               <div  class="input-group" >
-                <%= f.text_field :ganancias_anuales, {:class=> "form-control #{input_error_class(@autor, :ganancias_anuales)}",:placeholder=>"Introduzca ganancias..."} %>     
-                <%error_message(@autor, :ganancias_anuales)%>
+                <%= f.text_field :gat, {:class=> "form-control #{input_error_class(@author, :gat)}",:placeholder=>"Introduzca ganancias..."} %>     
+                <%error_message(@author, :gat)%>
               
 
               </div>
@@ -72,7 +67,7 @@
             
 
             <div class="actions col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-              <%= f.submit @autor.new_record? ? "Crear Registro" : "Actualizar Registro", :class => "btn btn-success"%>
+              <%= f.submit @author.new_record? ? "Crear Registro" : "Actualizar Registro", :class => "btn btn-success"%>
             </div> 
  
 

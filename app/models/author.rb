@@ -1,6 +1,5 @@
 class Author < ApplicationRecord
-    validates :nombre ,:nacionalidad, :idioma,:ganancias_anuales ,presence:{message: "No debe estar en blanco"}
-    validates :nombre, uniqueness: {message: "Ya se encuentra registrado"}
+  belongs_to :country
 
-    
+  validates :nombre, :idioma, :gat, presence: {message: "No debe estar vacio"}
 end

@@ -10,15 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_14_053344) do
+ActiveRecord::Schema.define(version: 2021_12_29_202533) do
 
   create_table "authors", force: :cascade do |t|
     t.string "nombre"
-    t.string "nacionalidad"
     t.string "idioma"
-    t.decimal "ganancias_anuales"
+    t.integer "gat"
+    t.integer "country_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_authors_on_country_id"
   end
 
   create_table "categories", force: :cascade do |t|

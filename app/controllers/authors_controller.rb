@@ -1,56 +1,67 @@
 class AuthorsController < ApplicationController
 
-  before_action :set_author, only: [:edit, :update, :destroy]
+  before_action :set_authors, only: [:edit, :update, :destroy]
+  before_action :set_countries, only: [:new, :edit,:create,:update]
 
   def index
-    @autores = Author.all
+      @autores = Author.all
+  end
+
+  def show
   end
 
   def new
-    @autor = Author.new
+    @author = Author.new
   end
+
 
   def edit
   end
 
   def create
-    @autor = Author.new(author_params)
+    @author = Author.new(author_params)
       respond_to do |format|
-        if @autor.save
-          format.js
+        if @author.save
           format.json {head :no_content}
+          format.js
+       
         else
-            format.js do 
-              errors_count = @autor.errors.size
-             flash.now.alert = "#{errors_count} #{"Errores".pluralize(errors_count)} favor de verificar que los campos no se encuentren vacios !!"
-             render :new 
-            end
+        
 
-            format.json {render json: @autor.errors, status: :unprocessable_entity}
+            format.js do 
+                errors_count = @author.errors.size
+                flash.now.alert = "#{errors_count} #{"Errores".pluralize(errors_count)} favor de verificar que los campos no se encuentren vacios !!"
+                render :new 
+            end
+            format.json { render json: @author.errors.full_messages, status: :unprocessable_entity } 
+
+          
         end
       end
-
   end
 
   def update
     respond_to do |format|
-      if @autor.update(author_params)
-        format.js
+      if @author.update(author_params)
+        
         format.json {head :no_content}
+        format.js
       else
+        format.json {render json: @author.errors.full_messages, status: :unprocessable_entity}
         format.js do
-          errors_count = @autor.errors.size
+          errors_count = @author.errors.size
           flash.now.alert = "#{errors_count} #{"Errores".pluralize(errors_count)} favor de verificar que los campos no se encuentren vacios !!"
-           render :new 
+           render :edit 
         end
+   
 
-        format.json {render json: @autor.errors, status: :unprocessable_entity}
+      
       end
     end
   end
 
   def destroy
-    @autor.destroy
+    @author.destroy
     respond_to do |format|
       format.js
       format.json {head :no_content}
@@ -58,11 +69,16 @@ class AuthorsController < ApplicationController
   end
 
 private
-  def set_author
-    @autor = Author.find(params[:id])
-  end
   def author_params
-    params.require(:author).permit(:nombre, :nacionalidad,:idioma,:ganancias_anuales )
+      params.require(:author).permit(:nombre, :idioma, :gat, :country_id)
+  end
+
+   def set_authors
+    @author = Author.find(params[:id])
+  end
+
+  def set_countries
+    @paises = Country.all
   end
 
 end
