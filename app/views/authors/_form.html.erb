@@ -1,5 +1,3 @@
-
-         
      
       <%= form_for @author, {remote: true, multipart: true} do |f|%>
 
@@ -40,8 +38,8 @@
             <div class="item form-group<%= @author.errors[:country].any? ? ' has-error has-feedback' : '' %>">
                   <%= f.label :country, "Pais: " %>
                   <div class="input-group">
-                      <%= collection_select(:author, :country_id, @paises, :id, :pais, {:prompt => 'Seleccione un pais'}, { class: "form-control" })%>
-                      <%error_message(@author,:country)%>
+                      <%= collection_select(:author, :country_id, @paises, :id, :pais, {:prompt => 'Seleccione un pais'}, { :class=> "form-control #{input_error_class(@author, :country)}" })%>
+                      <%error_message(@author, :country)%>
                   </div>
             </div>
 

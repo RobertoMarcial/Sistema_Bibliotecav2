@@ -1,7 +1,7 @@
 class AuthorsController < ApplicationController
 
   before_action :set_authors, only: [:edit, :update, :destroy]
-  before_action :set_countries, only: [:new, :edit,:create]
+  before_action :set_countries, only: [:new, :edit,:create,:update]
 
   def index
       @autores = Author.all
@@ -43,15 +43,17 @@ class AuthorsController < ApplicationController
   def update
     respond_to do |format|
       if @author.update(author_params)
-        format.js
+        
         format.json {head :no_content}
+        format.js
       else
-        format.json {render json: @author.errors, status: :unprocessable_entity}
+        format.json {render json: @author.errors.full_messages, status: :unprocessable_entity}
         format.js do
           errors_count = @author.errors.size
           flash.now.alert = "#{errors_count} #{"Errores".pluralize(errors_count)} favor de verificar que los campos no se encuentren vacios !!"
            render :edit 
         end
+   
 
       
       end
