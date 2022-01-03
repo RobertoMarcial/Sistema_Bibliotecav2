@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  imagen: MyString
+  titulo: MyString
+  edicion: MyString
+  editorial: one
+  category: one
+  author: one
+
+two:
+  imagen: MyString
+  titulo: MyString
+  edicion: MyString
+  editorial: two
+  category: two
+  author: two

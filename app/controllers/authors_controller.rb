@@ -26,16 +26,12 @@ class AuthorsController < ApplicationController
           format.js
        
         else
-        
-
             format.js do 
                 errors_count = @author.errors.size
-                flash.now.alert = "#{errors_count} #{"Errores".pluralize(errors_count)} favor de verificar que los campos no se encuentren vacios !!"
+                flash.now.alert = "#{errors_count} #{"Error/es".pluralize(errors_count)} Verificar El Registro !!"
                 render :new 
             end
             format.json { render json: @author.errors.full_messages, status: :unprocessable_entity } 
-
-          
         end
       end
   end
@@ -50,7 +46,7 @@ class AuthorsController < ApplicationController
         format.json {render json: @author.errors.full_messages, status: :unprocessable_entity}
         format.js do
           errors_count = @author.errors.size
-          flash.now.alert = "#{errors_count} #{"Errores".pluralize(errors_count)} favor de verificar que los campos no se encuentren vacios !!"
+          flash.now.alert = "#{errors_count} #{"Error/es".pluralize(errors_count)} Verificar El Registro !!"
            render :edit 
         end
    
