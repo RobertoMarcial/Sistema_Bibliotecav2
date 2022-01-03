@@ -1,0 +1,94 @@
+     
+      <%= form_for @book, {remote: true, multipart: true} do |f|%>
+
+        <%if alert.present?%>
+              <div class="alert alert-danger" >
+
+                <ul>
+                    <%@book.errors.full_messages.each do |msg|%>
+                      <li><span><%=msg%></span></li>
+                    <%end%>
+               </ul>
+              
+                <button type="button" class="close"  aria-label="close"   >
+                  <span aria-hidden="true" onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>x</span>
+                </button>
+              <%= flash.alert %>
+             </div> 
+    
+        <%end%>
+
+        
+    <div class="form-group">
+      <h4 class="control-label">Registro Libros:</h4>
+    </div>
+
+         <div  class="item form-group <%= @book.errors[:imagen].any? ? ' has-error has-feedback' : '' %>">
+              <%= f.label :imagen, "Imagen: " %>
+              
+            <div  class="input-group" >
+                <%= f.text_field :imagen, {:class=> "form-control #{input_error_class(@book, :imagen)}",:placeholder=>"Introduzca imagen..."} %>     
+                <%error_message(@book, :imagen)%>
+              </div>
+        </div>
+   
+            <div  class="item form-group <%= @book.errors[:titulo].any? ? ' has-error has-feedback' : '' %>">
+              <%= f.label :titulo, "Titulo: " %>
+              
+              <div  class="input-group" >
+                <%= f.text_field :titulo, {:class=> "form-control #{input_error_class(@book, :titulo)}",:placeholder=>"Agregar titulo..."} %>     
+                <%error_message(@book, :titulo)%>
+             
+
+              </div>
+            </div>
+
+
+            <div class="item form-group<%= @book.errors[:edicion].any? ? ' has-error has-feedback' : '' %>">
+                  <%= f.label :edicion, "Edicion: " %>
+                  <div class="input-group">
+                      <%= f.text_field :edicion, {:class=> "form-control #{input_error_class(@book, :edicion)}",:placeholder=>"Agregar edicion..."} %>     
+                     <%error_message(@book, :edicion)%> 
+                  </div>
+            </div>
+
+             <div  class="item form-group <%= @book.errors[:editorial].any? ? ' has-error has-feedback' : '' %>">
+              <%= f.label :editorial, "Editorial: " %>
+              
+              <div  class="input-group" >
+                      <%= collection_select(:book, :editorial_id, @editoriales, :id, :nombre, {:prompt => 'Seleccione editorial'}, { :class=> "form-control #{input_error_class(@book, :editorial)}" })%>
+                      <%error_message(@book, :editorial)%>
+              </div>
+            </div>
+
+            <div  class="item form-group <%= @book.errors[:category].any? ? ' has-error has-feedback' : '' %>">
+              <%= f.label :category, "Categoria: " %>
+              
+              <div  class="input-group" >
+                      <%= collection_select(:book, :category_id, @categorias, :id, :nombre, {:prompt => 'Seleccione categoria'}, { :class=> "form-control #{input_error_class(@book, :category)}" })%>
+                      <%error_message(@book, :category)%>
+              </div>
+            </div>
+
+         <div  class="item form-group <%= @book.errors[:author].any? ? ' has-error has-feedback' : '' %>">
+              <%= f.label :author, "Autor: " %>
+              
+              <div  class="input-group" >
+                      <%= collection_select(:book, :author_id, @autores, :id, :nombre, {:prompt => 'Seleccione author'}, { :class=> "form-control #{input_error_class(@book, :author)}" })%>
+                      <%error_message(@book, :author)%>
+              </div>
+            </div>
+
+       
+            
+
+            <div class="actions col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+              <%= f.submit @book.new_record? ? "Crear Registro" : "Actualizar Registro", :class => "btn btn-success"%>
+            </div> 
+ 
+
+
+<%end %>
+
+
+

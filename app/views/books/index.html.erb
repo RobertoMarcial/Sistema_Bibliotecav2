@@ -1,0 +1,48 @@
+<h1 class = "h3 mb-2 text-gray-800">Libros</h1>
+<div>
+        <%= link_to new_book_path, {remote: true, class: "btn btn-info", id: "añadir-book-btn"} do %>
+        <span class= "fas fa-plus-square"> </span>       
+        <% end  %>
+</div>
+<br/>
+
+<div class = "card shadow mb-4">
+    <div class = "card-body">
+        <div class = "table-responsive">
+                <table class = "table table-bordered"  id= "tablaLibros" width = "100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                
+                                <th>Imagen</th>
+                                <th>Titulo</th>
+                                <th>Edicion</th>
+                                <th>Editorial</th>
+                                <th>Categoria</th>
+                                <th>Autor</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                         <% @books.each do |book| %>
+                            <tr id="libro_<%=book.id%>">
+                                  <td><%= book.imagen %></td>  
+                                  <td><%= book.titulo %></td>
+                                  <td><%= book.edicion%></td>
+                                  <td><%= book.editorial != nil ? book.editorial.nombre : "No contiene editorial" %></td> 
+                                  <td><%= book.category !=nil ? book.category.nombre : "No tiene categoria"%></td>
+                                  <td><%= book.author !=nil ? book.author.nombre : "No tiene autor" %></td>
+                                  
+                                  
+                                   <td>
+                                      <%= link_to "editar", edit_book_path(book), html_options = {class: "btn btn-info btn-xs", remote: true} %>
+                                      <%= link_to 'Borrar', book, remote: true, method: :delete, data: { confirm: "¿Borrar libro: #{book.titulo}?"}, class: "btn btn-danger btn-xs" %>
+                                  </td>
+                            </tr>
+                        <%end%>
+                        </tbody>                        
+                </table>
+        </div>
+    </div>
+</div>
+
+<%=render 'modal_libros'%>

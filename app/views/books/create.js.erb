@@ -1,0 +1,6 @@
+$('#modalLibros').modal('toggle');
+
+$('#tablaLibros').append(
+    
+    '<tr id="libro_<%= @book.id %>" ><td><%= @book.imagen %></td><td><%=@book.titulo %></td><td><%=@book.edicion %></td><td><%= @book.editorial != nil ? @book.editorial.nombre : "No tiene editorial" %></td><td><%=@book.category != nil ? @book.category.nombre : "No tiene categoria "%></td><td><%= @book.author != nil ? @book.author.nombre : "No hay autor"  %></td><td><%= link_to 'editar', edit_book_path(@book), html_options = {class: "btn btn-info btn-xs", remote: true} %> <%= link_to "Borrar", @book, remote: true, method: :delete, data: { confirm: "¿Borrar autor: #{@book.titulo}?"}, class: "btn btn-danger btn-xs" %></td></tr>'
+);

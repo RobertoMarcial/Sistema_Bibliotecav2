@@ -1,0 +1,8 @@
+// Add the dialog title
+$('#modal-libros-title').html("Editar libro");
+ 
+// Render the new form
+$('.modal-body-libros').html('<%= j render("form") %>');
+ 
+// Show the dynamic dialog
+$('#modalLibros').modal("show");
