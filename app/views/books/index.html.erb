@@ -35,7 +35,7 @@
                                   
                                    <td>
                                       <%= link_to "editar", edit_book_path(book), html_options = {class: "btn btn-info btn-xs", remote: true} %>
-                                      <%= link_to 'Borrar', book, remote: true, method: :delete, data: { confirm: "¿Borrar aut: #{book.titulo}?"}, class: "btn btn-danger btn-xs" %>
+                                      <%= link_to 'Borrar', book, remote: true, method: :delete, data: { confirm: "¿Borrar libro: #{book.titulo}?"}, class: "btn btn-danger btn-xs" %>
                                   </td>
                             </tr>
                         <%end%>
